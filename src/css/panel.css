@@ -1,0 +1,13 @@
+.panel{
+    position: relative;
+    border: 2px black dashed;
+    background-color: rgb(213, 236, 236);
+    height: 50%;
+    width: 50%;
+    margin: 20% 20% auto 20%;
+    font-family: Arial;
+  }
+.font-title{
+  font-weight: bold;
+  font-size: 32px;
+}
