@@ -1,0 +1,10 @@
+.search-options{
+    padding: 10px 2% 10px 2%;
+}
+.search-button{
+    background-color:rgb(215, 255, 242);
+    border-radius: 5px;
+    width: auto;
+    color: black;
+
+}
