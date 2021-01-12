@@ -15,14 +15,15 @@ const Panel = () => {
     }
 
     useEffect( ()=>{
-        setDesc(`Name Search is my exercise for Solitas Dev Academy.\n
-        The exercise has listed four mandatory features:\n
-        - search popular names using names.json file\n
-        - search names aplhabetically\n
-        - getting total of names\n
-        - searching with a specific name\n
-        The exercise has been created using React and Bootstrap in front and Express with API connections.\n
-        `)
+        setDesc(`Name Search App is my exercise for Solita's Dev Academy.\n
+The exercise has listed four mandatory features:\n
+    - searching popular names using names.json file\n
+    - searching names in alphabetically (these are combined into single sorting option)\n
+    - getting total of names in names.json\n
+    - searching with a specific name\n
+The exercise has been created using React, React-bootstrap and React-particle-js libraries in front and API endpoints using
+Express.\n
+    `)
     },[])
     return(
         <div>
@@ -49,9 +50,9 @@ const Panel = () => {
                         
                         <div>
                             <ButtonGroup size="lg" aria-label="Basic example">
-                                <Button className="font-text search-priority" value="listing" onClick={f_setDisplay} >Listing</Button>
-                                <Button className="font-text search-priority" value="total" onClick={f_setDisplay} >Total</Button>
-                                <Button className="font-text search-priority" value="specific" onClick={f_setDisplay} >Specific</Button>
+                                <Button className="font-text" value="listing" onClick={f_setDisplay} >Listing</Button>
+                                <Button className="font-text" value="total" onClick={f_setDisplay} >Total</Button>
+                                <Button className="font-text" value="specific" onClick={f_setDisplay} >Specific</Button>
                             </ButtonGroup>
                         </div>
                         <div>

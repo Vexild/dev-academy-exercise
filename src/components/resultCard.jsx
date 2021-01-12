@@ -6,20 +6,20 @@ import '../css/card.css'
 const ResCard = (props) =>{
 
     return(
-        <Container>
-            <Row className="card">
-                <Col md={4}>
-                <p className="font-text">
-                    {props.data.name}
-                </p>
+        <div>
+            <Row  className="result-card">
+                <Col md={8}>
+                    <p className="font-text card-name">
+                        {props.data.name}
+                    </p>
                 </Col>
-                <Col md={4}>
-                <p classNAme="card-amount">
-                    {props.data.amount}
-                </p>
+                <Col md={2}>
+                    <p className="font-text card-amount">
+                        {props.data.amount}
+                    </p>
                 </Col>
             </Row>
-        </Container>
+        </div>
     )
 }
 export default ResCard;

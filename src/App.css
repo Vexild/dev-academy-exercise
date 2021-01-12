@@ -1,3 +1,16 @@
 .App {
   text-align: center;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.bg{
+  position: absolute !important;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+.scrollable{
+  max-height: auto;
+  overflow-y: hidden;
 }

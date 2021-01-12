@@ -34,14 +34,17 @@ app.get('/getData', (req, res) =>{
 })
 
 app.get('/getNames', (req, res) =>{
-    res.send("getOnlyNames")
+    res.send("getOnlyNames - no need for this")
 })
 app.get('/getTotal', (req, res) =>{
-    const result = JSON.stringify(22)
+    const result = JSON.stringify(nameData.names.length)
     res.status(200).send(result)
 })
-app.get('/getTotal/:name', (req, res) =>{
-    res.send(req.params.name)
+app.get('/getSingle/:name', (req, res) =>{
+    console.log("To lower case: ",(nameData.names[1].name).toLowerCase())
+    const result = nameData.names.find(elem => elem.name.toLowerCase() === req.params.name.toLowerCase() )
+    console.log("Result in API : ",result, nameData.names,  req.params.name)
+    res.status(200).send(result)
 })
 
 app.get('/', (req, res) =>{

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect} from 'react'
-import {Button, ButtonGroup, Col} from 'react-bootstrap'
+import {Button, ButtonGroup, Col, Row} from 'react-bootstrap'
 import ResCard from './resultCard'
 import '../css/fonts.css'
 import '../css/search.css'
@@ -12,17 +12,26 @@ const Search = (props) => {
     const [alphabetical, setAlphabetical] = useState(false)
     const [resultListing, setResultListing] = useState([])
     const [resultTotal, setResultTotal] = useState(0)
-    const [resultSpecific, setResultSpecific] = useState("")
-    const [searcName, setSearchName] = useState("")
+    const [resultSpecific, setResultSpecific] = useState([])
+    const [searchName, setSearchName] = useState("")
+    const [error, setError] = useState(false)
 
 
     useEffect (()=> {
-        console.log("Popular changed")
         if(popular){ setResultListing(resultListing.sort((a,b) => a.name >  b.name ? 1 : -1 ))}
         else{
             setResultListing(resultListing.sort((a,b) => a.amount < b.amount ? 1 : -1 ))
         }
     },[resultListing, popular])
+    
+    useEffect (()=> {
+        console.log("Reset")
+        setAlphabetical(false)
+        setPopular(true)
+        setResultListing([])
+        setResultTotal(0)
+        setResultSpecific([])
+    },[option])
 
 
     const changeSearchName = (e) =>{
@@ -59,41 +68,51 @@ const Search = (props) => {
             console.error("ERROR", err);
         }
     }
-    const searchSpecific = () => {
-
-    }
-    // Alphabetical boolean is unused because if we want to add more sorting options, we'd need it later
-    const changeSortOption = (e) =>{
-        if(e.target.value === "popular"){
-            setPopular(true)
-            setAlphabetical(false)
-        } else{
-            setPopular(false)
-            setAlphabetical(true)
+    const searchSpecific = (e) => {
+        setError(false)
+        try{
+            axios.get("http://localhost:4000/getSingle/"+searchName)
+            .then(res =>{
+                setResultSpecific([])
+                if(typeof(res.data) === 'object') {  // check that we're dealing with object
+                    setResultSpecific([res.data.name, res.data.amount]) 
+                }else{
+                    setError(true)
+                }
+            })
+        }catch(err){
+            console.error("ERROR", err);
         }
+    }
+    const changeSortOption = (e) =>{
+        setAlphabetical(!alphabetical)
+        setPopular(!popular)
     }   
 
     switch (option) {
         case "listing":
                 return(
                         // searchs them right away
-                    <Col> 
-                        <ButtonGroup className="search-options font-text">
-                            <label htmlFor="popular">Popular</label>
-                                <input onClick={value => changeSortOption(value)} 
-                                        checked={popular} 
-                                        value="popular" 
-                                        type="radio" 
-                                        name="popular" />
-                            <label htmlFor="alphab">Alphabetical</label>
-                                <input onClick={value => changeSortOption(value)} 
-                                        checked={alphabetical} 
-                                        value="alphabetical"
-                                        type="radio" 
-                                        name="alphab"/>
-                        </ButtonGroup>
+                    <Col className="search-component"> 
+                        <Col>       
+                            <ButtonGroup className="search-options font-text radio-btn-line">
+                                <label htmlFor="popular">Popular</label>
+                                    <input  onChange={value => changeSortOption(value)}
+                                            checked={popular} 
+                                            value="popular" 
+                                            type="radio" 
+                                            name="popular" />
+                                <label htmlFor="alphab">Alphabetical</label>
+                                    <input  onChange={value => changeSortOption(value)}
+                                            checked={alphabetical} 
+                                            value="alphabetical"
+                                            type="radio" 
+                                            name="alphab"/>
+                            </ButtonGroup>
+                        </Col>
                         <Button className="search-button font-text" onClick={searchAll}>Search</Button>
-                        <div>
+                        <div className="result-listing">
+                        {resultListing.length >0 ? <p className="font-text">Found following names:</p> : <p></p>} 
                         { resultListing.map((elem) =>{
                                 return(
                                     <div>
@@ -104,38 +123,46 @@ const Search = (props) => {
                         </div>
                     </Col>
                 )
-            break;
         case "total":
                 return(
-                    <Col>
+                    <Col className="search-component">
                         <Button className="search-button font-text" onClick={getTotal}>Search</Button>
 
-                        { resultTotal ? <h3> {resultTotal} names in total</h3> : <p>-</p> }
+                        { resultTotal ? <p className="font-title"> {resultTotal} names in total</p> : <p></p> }
 
                     </Col>
                 )
-            break;
     
         case "specific":
                 return(
-                    <div>
-                        <p>Type in name you want to search</p>
-                        <input type="text" onChange={changeSearchName}></input>
-                        <Button onClick={searchSpecific}>Search Name</Button>
-                        <div>
-                            <p>result:</p>
-                            <p>{resultSpecific}</p>
-                        </div>
-                    </div> 
+                    <Col className="search-component">
+                        <Col>
+                            <p>Type in name you want to search</p>
+                            <input type="text" onChange={changeSearchName}></input>
+                        </Col>
+                        <Col>
+                            <Button className="search-button font-text" onClick={searchSpecific}>Search Name</Button>
+                        </Col>
+                        
+                        { error ?
+                            <div>
+                                <p className="font-text">Error. Name not found. Check spelling and try again.</p>
+                            </div>
+                        : <p></p>}
+                        { resultSpecific[0] ? 
+                            <div>
+                                <h3 className="font-title">{resultSpecific[0]}</h3>
+                            <p className="font-text">Found {resultSpecific[1]} persons named {resultSpecific[0]} </p>
+                            </div> 
+                        : <p></p>}
+                    </Col> 
                 )
-            break;
     
         default:
             break;
     }
     return(
-        <p>Hello from search! option: {option}</p>
-        
+        <div></div>
     )
 }
 export default Search;

@@ -1,11 +1,15 @@
-.card{
-    position: relative;
-    background-color: rgb(253, 138, 144);
-    margin: 10px;
+.result-card{
+    margin: auto auto auto auto;
+    text-align: center;
 }
+
 .card-name{
-    
+    position: relative;
+    font-size: x-large;
+    font-weight: bolder;
 }
 .card-amount{
-
+    position: relative;
+    font-size: x-large;
+    font-weight: lighter;
 }
