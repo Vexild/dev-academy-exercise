@@ -9,11 +9,15 @@
     font-weight: lighter;
     font-size: 18px;
   }
-  .desc{
-    font-family: 'Roboto', sans-serif;
-    word-break: keep-all;
-    font-weight: lighter;
-    font-size: 16px;
-    margin: 20px;
-    line-height: 150%;
-  }
+  
+  /* mobile  */
+@media (max-width: 622px) {
+    .desc{
+        font-family: 'Roboto', sans-serif;
+        word-break: keep-all;
+        font-weight: lighter;
+        font-size: 16px;
+        margin: 3% auto 1% auto;
+        line-height: 150%;
+      }
+}

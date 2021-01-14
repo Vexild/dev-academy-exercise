@@ -94,6 +94,7 @@ const Search = (props) => {
                 return(
                         // searchs them right away
                     <Col className="search-component"> 
+                        <p className="font-text">Search for list of names</p>
                         <Col>       
                             <ButtonGroup className="search-options font-text radio-btn-line">
                                 <label htmlFor="popular">Popular</label>
@@ -126,6 +127,7 @@ const Search = (props) => {
         case "total":
                 return(
                     <Col className="search-component">
+                        <p className="font-text">Search for total number of names</p>
                         <Button className="search-button font-text" onClick={getTotal}>Search</Button>
 
                         { resultTotal ? <p className="font-title"> {resultTotal} names in total</p> : <p></p> }
@@ -137,7 +139,7 @@ const Search = (props) => {
                 return(
                     <Col className="search-component">
                         <Col>
-                            <p>Type in name you want to search</p>
+                            <p className="font-text">Type in name you want to search</p>
                             <input type="text" onChange={changeSearchName}></input>
                         </Col>
                         <Col>

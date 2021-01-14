@@ -33,9 +33,6 @@ app.get('/getData', (req, res) =>{
     nameData ? res.send(nameData) : res.status(500, "No names data found.")
 })
 
-app.get('/getNames', (req, res) =>{
-    res.send("getOnlyNames - no need for this")
-})
 app.get('/getTotal', (req, res) =>{
     const result = JSON.stringify(nameData.names.length)
     res.status(200).send(result)
