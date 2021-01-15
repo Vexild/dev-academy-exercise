@@ -22,7 +22,7 @@ The exercise has listed four mandatory features:\n
 - searching names in alphabetically (these are combined into single sorting option)
 - getting total of names in names.json
 - searching with a specific name\n
-The exercise has been created using React, React-bootstrap and React-particle-js libraries in front and API endpoints using Express.
+The exercise has been created using React, React-bootstrap, React-spinners and React-particle-js libraries in front and API endpoints using Express.
     `)
         setApi([`Name searchs uses following endpoints in port 4000 using Express:` ,
         `Possible TODO endpoints for future implementations (example for database):`])

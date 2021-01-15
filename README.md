@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Name Search app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is my exercise for Solita's Dev Academy program. It's NodeJS+React+Express app that has represents data from JSON file
 
-## Available Scripts
+# Frontend
 
-In the project directory, you can run:
+UI is built by using React-Bootstrap and background has a react-partincle-js component running. Background is non-dynamic and cannot be interacted.
+![Alt text](img/screenshot.jpg?raw=true "Name Search home")
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Express
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Express runs in port 4000 and has three endpoints:
 
-### `yarn test`
+```
+/getData	      GET    Returns all names. No sorting.
+/getTotal	      GET    Returns total length of names.
+/getSingle:name   GET    Returns first match with find() method.
+```
+Required features included getting names in borth alphabetical and popular form. These I did not seperate to different endpoints, instead implemented sorting method in to frontend.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Structure
 
-### `yarn build`
+Name Search has a Panel component as the main parent. it includes all other components except the background particle animation. First it renders a Switch Router. These routes render corresponding HTML in returning statement of Panel.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Under Home case, are three selections, Listing Search, Total number search and Specific name search. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Listing 
+Listing has group of radiobuttons that provides sorting options. List is re-rendered during and after search, allowing dynamic sorting without need of more APi requests.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Total 
+Total is the most simple request. It returns the length of the names object in names.json.
 
-### `yarn eject`
+## Specific
+Single name search. Returns matching name and amount. This could be developed further to allow multiple names - and depending on the json file, allow search by other keys (salary, company, title etc.)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Running Name Search
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+First install all dependencies by:
 
-## Learn More
+```
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+After that start express server in root directory:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+nodemon .\express.js
+```
 
-### Code Splitting
+And then launch the application in root:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+npm start
+```
+Name Search opens in port 3000 while the express runs in port 4000.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Error handling
 
-### Making a Progressive Web App
+Name search runs independently without express but will produce error if endpoints are called. Error messages are also logged.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

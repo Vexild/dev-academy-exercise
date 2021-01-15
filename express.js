@@ -38,9 +38,7 @@ app.get('/getTotal', (req, res) =>{
     res.status(200).send(result)
 })
 app.get('/getSingle/:name', (req, res) =>{
-    console.log("To lower case: ",(nameData.names[1].name).toLowerCase())
     const result = nameData.names.find(elem => elem.name.toLowerCase() === req.params.name.toLowerCase() )
-    console.log("Result in API : ",result, nameData.names,  req.params.name)
     res.status(200).send(result)
 })
 
