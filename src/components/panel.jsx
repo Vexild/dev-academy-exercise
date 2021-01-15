@@ -16,12 +16,12 @@ const Panel = () => {
     }
 
     useEffect( ()=>{
-        setDesc(`Name Search App is my exercise for Solita's Dev Academy.\n
+        setDesc(`Name Search App is my exercise for Solita's Dev Academy.
 The exercise has listed four mandatory features:\n
-        - searching popular names using names.json file\n
-        - searching names in alphabetically (these are combined into single sorting option)\n
-        - getting total of names in names.json\n
-        - searching with a specific name\n
+- searching popular names using names.json file
+- searching names in alphabetically (these are combined into single sorting option)
+- getting total of names in names.json
+- searching with a specific name\n
 The exercise has been created using React, React-bootstrap and React-particle-js libraries in front and API endpoints using Express.
     `)
         setApi([`Name searchs uses following endpoints in port 4000 using Express:` ,
@@ -42,30 +42,36 @@ The exercise has been created using React, React-bootstrap and React-particle-js
                         <p className="font-title">Name Search API</p>
                         <p className="font-text desc">{api[0]}</p>
                         <table className="font-text desc">
-                            <tr>
-                                <th>/getData</th><th>GET</th><th>Returns all names. No sorting.</th>
-                            </tr>
-                            <tr>
-                                <th>/getTotal</th><th>GET</th><th>Returns total length of names.</th>
-                            </tr>
-                            <tr>
-                                <th>/getSingle:name </th><th>GET</th><th>Returns first match with find() method.</th>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <th>/getData</th><th>GET</th><th>Returns all names. No sorting.</th>
+                                </tr>
+                                <tr>
+                                    <th>/getTotal</th><th>GET</th><th>Returns total length of names.</th>
+                                </tr>
+                                <tr>
+                                    <th>/getSingle:name </th><th>GET</th><th>Returns first match with find() method.</th>
+                                </tr>
+                            </tbody>
                         </table>
                         <p className="font-text desc">{api[1]}</p>
                         <table className="font-text desc">
-                            <tr>
-                                <th>modifyName:name</th><th>UPDATE</th><th>Updates single name in DB or JSON file.</th>
-                            </tr>
-                            <tr>
-                                <th>/modifyMultiple:nameList</th><th>UPDATE</th><th>Updates multiple names in DB or JSON file.</th>
-                            </tr>
-                            <tr>
-                                <th>/removeName:name</th><th>DELETE</th><th>Removes name.</th>
-                            </tr>
-                            <tr>
-                                <th>/addNAme:nameObject </th><th>POST</th><th>Add element with correspondig fields.</th>
-                            </tr>
+                            <tbody>
+
+                                <tr>
+                                    <th>modifyName:name</th><th>UPDATE</th><th>Updates single name in DB or JSON file.</th>
+                                </tr>
+                                <tr>
+                                    <th>/modifyMultiple:nameList</th><th>UPDATE</th><th>Updates multiple names in DB or JSON file.</th>
+                                </tr>
+                                <tr>
+                                    <th>/removeName:name</th><th>DELETE</th><th>Removes name.</th>
+                                </tr>
+                                <tr>
+                                    <th>/addNAme:nameObject </th><th>POST</th><th>Add element with correspondig fields.</th>
+                                </tr>
+                            </tbody>
+
                         </table>
                     </div>
                 </Route>

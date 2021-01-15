@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect} from 'react'
-import {Button, ButtonGroup, Col, Row} from 'react-bootstrap'
+import {Button, ButtonGroup, Col} from 'react-bootstrap'
 import ResCard from './resultCard'
 import '../css/fonts.css'
 import '../css/search.css'
@@ -25,7 +25,6 @@ const Search = (props) => {
     },[resultListing, popular])
     
     useEffect (()=> {
-        console.log("Reset")
         setAlphabetical(false)
         setPopular(true)
         setResultListing([])

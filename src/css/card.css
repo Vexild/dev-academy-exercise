@@ -1,15 +1,11 @@
 .result-card{
-    margin: auto auto auto auto;
     text-align: center;
+    flex-wrap: nowrap;
 }
-
 .card-name{
-    position: relative;
     font-size: x-large;
     font-weight: bolder;
 }
 .card-amount{
-    position: relative;
     font-size: x-large;
-    font-weight: lighter;
 }
