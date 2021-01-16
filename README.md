@@ -23,7 +23,9 @@ Required features included getting names in borth alphabetical and popular form.
 
 Name Search has a Panel component as the main parent. it includes all other components except the background particle animation. First it renders a Switch Router. These routes render corresponding HTML in returning statement of Panel.
 
-Under Home case, are three selections, Listing Search, Total number search and Specific name search. 
+Under Home case, are three selections, Listing Search, Total number search and Specific name search.
+
+Data comes from names.json file currently. This could be routed to database but current express is build around the json file.
 
 ## Listing 
 Listing has group of radiobuttons that provides sorting options. List is re-rendered during and after search, allowing dynamic sorting without need of more APi requests.
