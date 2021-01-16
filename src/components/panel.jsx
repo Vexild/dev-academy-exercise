@@ -59,7 +59,7 @@ The exercise has been created using React, React-bootstrap, React-spinners and R
                             <tbody>
 
                                 <tr>
-                                    <th>modifyName:name</th><th>UPDATE</th><th>Updates single name in DB or JSON file.</th>
+                                    <th>/modifyName:name</th><th>UPDATE</th><th>Updates single name in DB or JSON file.</th>
                                 </tr>
                                 <tr>
                                     <th>/modifyMultiple:nameList</th><th>UPDATE</th><th>Updates multiple names in DB or JSON file.</th>
