@@ -107,10 +107,10 @@ const Search = (props) => {
     const searchSpecific = (e) => {
         setAPIerror(false)
         setLoading(true)
+        setResultSpecific([]) // need to empty the result before any requests are called
         try{
             axios.get("http://localhost:4000/getSingle/"+searchName)
             .then(res =>{
-                setResultSpecific([])
                 if(typeof(res.data) === 'object') {  // check that we're dealing with object
                     setResultSpecific([res.data.name, res.data.amount]) 
                 }else{
